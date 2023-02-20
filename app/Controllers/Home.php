@@ -11,9 +11,10 @@ class Home extends BaseController
 {
     use ResponseTrait;
 
+    private MasterModel $masterModel;
+
     public function __construct()
     {
-        $this->db           = \Config\Database::connect();
         $this->masterModel  = new MasterModel();
     }
 

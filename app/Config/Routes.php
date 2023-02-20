@@ -95,6 +95,20 @@ $routes->group('dpl', function ($routes) {
     $routes->post('simpanNilaiResult', 'Dpl::simpanNilaiResult');
 });
 
+/*
+ * --------------------------------------------------------------------
+ * Router Api
+ * --------------------------------------------------------------------
+ */
+
+ // for website e-konseling fkip
+
+ $routes->group('konseling', function ($routes) {
+    $routes->post('auth/login', 'Konseling\Auth::login');
+});
+
+
+
 
 
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
