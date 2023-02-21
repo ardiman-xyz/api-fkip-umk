@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Services\Konseling;
+namespace App\Services\Konseling\Mahasiswa;
 
-use App\Models\UserModel;
+use App\Models\PenggunaModel;
 use Exception;
 use Firebase\JWT\JWT;
 
 class AuthService
 {
-   private UserModel $userModel;
+   private PenggunaModel $penggunaModel;
 
-   public function __construct(UserModel $userModel)
+   public function __construct(PenggunaModel $penggunaModel)
    {
-      $this->userModel = $userModel;
+      $this->penggunaModel = $penggunaModel;
    }
 
    public function postLogin(string $username, string $password)
    {
       if($username === "" OR null && $password === "" OR null) throw new Exception("Silahkan isi input!");
 
-      $user = $this->userModel->getDataByNIM($username);
+      $user = $this->penggunaModel->getDataByNIM($username);
       if($user === null) throw new Exception("Data tidak ditemukan");
 
       $passwordEncrypt = sha1($password);
@@ -35,7 +35,8 @@ class AuthService
      $token = JWT::encode($payload, $key, 'HS256');
 
       return [
-         "status" => true,
+         "success" => true,
+         "error"  => null,
          "token"  => $token
       ];
    }

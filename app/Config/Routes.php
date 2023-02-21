@@ -104,7 +104,15 @@ $routes->group('dpl', function ($routes) {
  // for website e-konseling fkip
 
  $routes->group('konseling', function ($routes) {
-    $routes->post('auth/login', 'Konseling\Auth::login');
+
+    $routes->group('admin', function ($routes) {
+        $routes->post('login', 'Konseling\Admin\Auth::login');
+    });
+    
+    $routes->group('mahasiswa', function ($routes) {
+        $routes->post('login', 'Konseling\Mahasiswa\Auth::login');
+    });
+
 });
 
 

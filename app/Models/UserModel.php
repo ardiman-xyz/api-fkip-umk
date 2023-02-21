@@ -6,14 +6,14 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-   protected $table         = 'pengguna';
-    protected $allowedFields = ['id_prodi', 'nim', 'password', 'token', 'nama_lengkap', 'no_wa'];
-   //  protected $returnType    = \App\Entities\User::class;
-    protected $useTimestamps = false;
+   protected $table         = 'user';
+   protected $allowedFields = ['username', 'password', 'level', 'nama_user', 'jenis_kelamin'];
+  //  protected $returnType    = \App\Entities\User::class;
+   protected $useTimestamps = false;
 
-   public function getDataByNIM(string $nim): ?array
+   public function getDataByUsername(string $username): ?array
    {
-      return $this->where("nim", $nim)->first();
+      return $this->where("username", $username)->first();
    }
-   
+
 }

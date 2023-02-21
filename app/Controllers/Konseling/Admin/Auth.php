@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Controllers\Konseling;
+namespace App\Controllers\Konseling\Admin;
 
 use App\Models\UserModel;
-use App\Services\Konseling\AuthService;
+use App\Services\Konseling\Admin\AuthService;
 use CodeIgniter\RESTful\ResourceController;
 use Exception;
 
 class Auth extends ResourceController
 {
+   
    private AuthService $authService;
 
    public function __construct()
@@ -28,6 +29,6 @@ class Auth extends ResourceController
       } catch (Exception $e) {
          return $this->fail($e->getMessage(), 400);
       }
-
    }
+
 }
